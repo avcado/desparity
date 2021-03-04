@@ -84,12 +84,3 @@ void terminal_write(const char* data, size_t size){
   for (size_t i = 0; i < size; i++)
     terminal_putchar(data[i]);
 }
-
-void terminal_writestring(const char* data){
-  terminal_write(data, strlen(data));
-}
-
-void terminal_colorWrite(uint8_t color, const char* data){
-    terminal_color = color; // Set the color
-    terminal_writestring(data);
-}
