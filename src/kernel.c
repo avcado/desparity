@@ -5,7 +5,6 @@
 #include "vga.h"
 
 void kernel_main(void){
+  // Initialize VGA
   terminal_initialize();
-  terminal_setcolor(VGA_COLOR_GREEN);
-  terminal_writestring("Greenj\n");
 }
