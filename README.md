@@ -41,4 +41,4 @@ $ make
 
 ## Running
 
-All you need to do, is, after compiling, run `make makeIso; qemu-system-x86_64 -cdrom desparity.iso`.
+All you need to do, is, after compiling, run `make makeIso; make qemu`.
