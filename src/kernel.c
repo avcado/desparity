@@ -74,7 +74,7 @@ void terminal_putchar(char c){
   if (++terminal_column == VGA_WIDTH) {
     terminal_column = 0;
     if (++terminal_row == VGA_HEIGHT)
-      terminal_row++;
+      terminal_row = 0;
     }
   }
 }
@@ -90,30 +90,4 @@ void terminal_writestring(const char* data){
 
 void kernel_main(void){
   terminal_initialize();
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("Hello, World from Desparity\n");
-  terminal_writestring("penis\n");
 }
