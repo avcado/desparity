@@ -1,4 +1,4 @@
-KERNCFLAGS := -std=gnu99 -ffreestanding -O2 -Wall -Wextra
+KERNCFLAGS := -std=gnu99 -ffreestanding -O2 -Wall -Wextra -Iinclude
 CC := i386-elf-gcc
 AS := nasm
 LDS := src/linker.ld
