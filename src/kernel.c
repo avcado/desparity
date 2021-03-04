@@ -3,6 +3,7 @@
 #include <stdint.h>
 
 #include "vga.h"
+#include "statuses.h"
 
 void kernel_main(void){
   // Initialize VGA

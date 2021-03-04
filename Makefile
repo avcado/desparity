@@ -5,6 +5,8 @@ LDS := src/linker.ld
 BIN := desparity.bin
 OBJ := bin/boot.o bin/kernel.o
 LDFLAGS := -ffreestanding -O2 -nostdlib
+QEMU := qemu-system-x86_64
+QEMUFLAGS := -cdrom
 
 all: multiboot kernel link
 
@@ -37,3 +39,6 @@ clean:
 	rm -rfv bin
 	rm desparity.bin desparity.iso
 	rm -rfv isodir/
+
+qemu:
+	$(QEMU) $(QEMUFLAGS) desparity.iso
