@@ -1,5 +1,8 @@
 # Desparity, An i386-elf OS
 
+## Based Off Of....
+Desparity is based off of OSDev Wiki's Bare Bones. Please do NOT go into the issues and write a 7,000 word essay on why using Bare Bones is bad.
+
 ## Compiling
 
 Desparity does not come with a cross-compiler, so you're going to need to compile it first, before compiling.
