@@ -1,7 +1,7 @@
 KERNCFLAGS := -std=gnu99 -ffreestanding -O2 -Wall -Wextra
 CC := i386-elf-gcc
 AS := nasm
-LDS := linker.ld
+LDS := src/linker.ld
 BIN := desparity.bin
 OBJ := bin/boot.o bin/kernel.o
 LDFLAGS := -ffreestanding -O2 -nostdlib
@@ -12,13 +12,13 @@ all: multiboot kernel link
 multiboot:
 	@echo Compiling the multiboot stub! :D
 	@mkdir -pv bin
-	@$(AS) -felf32 boot.asm -o bin/boot.o
+	@$(AS) -felf32 src/boot.asm -o bin/boot.o
 
 # Compiles the kernel
 kernel:
 	@echo Compiling the kernel! :D
 	@mkdir -pv bin/
-	@$(CC) -c kernel.c -o bin/kernel.o $(KERNCFLAGS)
+	@$(CC) -c src/kernel.c -o bin/kernel.o $(KERNCFLAGS)
 
 # Links everything together
 link:
