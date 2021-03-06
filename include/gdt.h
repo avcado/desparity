@@ -8,9 +8,19 @@ struct gdt_entry {
   uint16_t limitLow;
   uint16_t baseLow;
   uint8_t baseMedium;
+  
+  /**** Descriptors ****/
   union {
     uint8_t nullDesc;
   };
+  union {
+    uint8_t dataDesc;
+  };
+  union {
+    uint8_t codeDesc;
+  };
+  /**** End Descriptors ***/
+
   union {
     uint8_t access;
     struct {
@@ -39,12 +49,22 @@ struct gdt_entry gdt;
 
 // Setup desired limit
 void desiredLimit() {
-    uint64_t desired_limit;
+    uint64_t desired_limit = 0;
 
     gdt.limitLow = desired_limit&0xFFFF;
     gdt.limitHigh = (desired_limit>>16)&0x0F;
     
     // Setup null descriptor.
     memset(&gdt.nullDesc,0,sizeof(struct gdt_entry));
-    printf("Desired limit for GDT setup!\n");
+    // Setup data descriptor.
+    memset(&gdt.dataDesc,(1<<44) | (1<<47) | (1<<41),
+          sizeof(struct gdt_entry));
+    // Setup code descriptor
+    memset(&gdt.codeDesc,(1<<44) | (1<<47) | (1<<41) | (1<<43) | (1<<53),
+          sizeof(struct gdt_entry));
+    // Setup rodata descriptor
+    // ...
+
+    // Result
+    printf("Setup null, rodata, code, and data descriptors!\n");
 }
