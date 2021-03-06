@@ -62,9 +62,7 @@ void desiredLimit() {
     // Setup code descriptor
     memset(&gdt.codeDesc,(1<<44) | (1<<47) | (1<<41) | (1<<43) | (1<<53),
           sizeof(struct gdt_entry));
-    // Setup rodata descriptor
-    // ...
 
     // Result
-    printf("Setup null, rodata, code, and data descriptors!\n");
+    printf("Setup null, code, and data descriptors!\n");
 }
