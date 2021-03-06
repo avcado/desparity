@@ -1,6 +1,7 @@
 #pragma once
 #include "kerror.h"
 #include "libc/stdio.h"
+#include "libc/string.h"
 
 // Define the GDT Struct
 struct gdt_entry {
@@ -42,5 +43,8 @@ void desiredLimit() {
 
     gdt.limitLow = desired_limit&0xFFFF;
     gdt.limitHigh = (desired_limit>>16)&0x0F;
+    
+    // Setup null descriptor.
+    memset(&gdt.nullDesc,0,sizeof(struct gdt_entry));
     printf("Desired limit for GDT setup!\n");
 }
