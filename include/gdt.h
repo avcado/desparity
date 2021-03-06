@@ -63,7 +63,7 @@ void setupDesiredValues() {
     memset(&gdt.nullDesc,0,sizeof(struct gdt_entry));
 
     // Tell the world we've done it.
-    printf("Setup some GDT descriptors' value.");
+    printf("Setup some GDT descriptors' value.\n");
 }
 
 void initGDT() {
