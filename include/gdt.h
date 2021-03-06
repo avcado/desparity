@@ -7,6 +7,8 @@
 #include "libc/stdio.h"
 #include "libc/string.h"
 
+extern void reloadRegs();
+
 // GDT Entry
 struct gdt_entry {
   uint16_t limitLow;
@@ -21,6 +23,9 @@ struct gdt_entry {
   };
   union {
       uint8_t codeDesc;
+  };
+  union {
+    uint8_t rodataDesc;
   };
   /**** End Descriptors ****/
   union {
@@ -62,8 +67,25 @@ void setupDesiredValues() {
     // Null desc
     memset(&gdt.nullDesc,0,sizeof(struct gdt_entry));
 
+    // Rodata descriptor
+    gdt.limitLow = 0xFFFF;
+    gdt.limitHigh = 0xFF;
+    gdt.baseHigh = 0;
+    gdt.baseLow = 0;
+    gdt.baseMedium = 0;
+
+
     // Tell the world we've done it.
     printf("Setup some GDT descriptors' value.\n");
+    
+    // Set flags
+    gdt.rw_bit = 1;
+    gdt.type = 1;
+    gdt.exec = 1;  
+
+    printf("GDT Flags setup!\n");
+
+    reloadRegs();
 }
 
 void initGDT() {
