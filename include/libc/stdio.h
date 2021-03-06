@@ -5,6 +5,7 @@
 // Function definitions
 void printf(const char* data);
 void printc(const char* data, size_t size);
+void printcol(uint8_t color, const char* data);
 
 #ifndef PRINTF
 #define PRINTF
@@ -59,3 +60,17 @@ void printh(const char* hex){
 }
 
 #endif //PRINTH
+
+#ifndef PRINTCOL
+#define PRINTCOL
+
+void printcol(uint8_t color, const char* data){
+  // First we want to set the color
+  terminal_setcolor(color);
+  // Then we want to print out the data
+  printf(data);
+  // Finally we can reset the color
+  terminal_setcolor(VGA_COLOR_WHITE);
+}
+
+#endif //PRINTCOL
