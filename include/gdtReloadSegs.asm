@@ -1,3 +1,6 @@
+bits 32
+section .text
+
 [GLOBAL reloadRegs]
 reloadRegs:
   mov ax, 0x08
