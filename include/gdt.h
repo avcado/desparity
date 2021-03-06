@@ -85,7 +85,7 @@ void setupDesiredValues() {
 
   printf("GDT Flags setup!\n");
 
-  asm("hlt");
+  kerror("Triple Fault! Check cpudump.");
   reloadRegs();
 }
 
