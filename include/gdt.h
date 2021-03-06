@@ -2,67 +2,18 @@
 #include "kerror.h"
 #include "libc/stdio.h"
 #include "libc/string.h"
+extern void gdt_flush(unsigned int);
 
-// Define the GDT Struct
-struct gdt_entry {
-  uint16_t limitLow;
-  uint16_t baseLow;
-  uint8_t baseMedium;
-  
-  /**** Descriptors ****/
-  union {
-    uint8_t nullDesc;
-  };
-  union {
-    uint8_t dataDesc;
-  };
-  union {
-    uint8_t codeDesc;
-  };
-  /**** End Descriptors ***/
+// GDT Entry
+struct gdt_entry_struct
+{
+   uint_16 limit_low;           // The lower 16 bits of the limit.
+   uint_16 base_low;            // The lower 16 bits of the base.
+   uint_8 base_middle;         // The next 8 bits of the base.
+   uint_8 access;              // Access flags, determine what ring this segment can be used in.
+   uint_8 granularity;         // Granularity
+   uint_8 base_high;           // The last 8 bits of the base.
+} __attribute__((packed));
 
-  union {
-    uint8_t access;
-    struct {
-      uint8_t accesed:1;
-      uint8_t rw_bit:1;
-      uint8_t dir:1;
-      uint8_t exec:1;
-      uint8_t type:1;
-      uint8_t priv:2;
-      uint8_t present:1;
-    };
-  };
-  uint8_t limitHigh:4;
-  union {
-    uint8_t flags:4;
-    struct {
-      uint8_t resv:2;
-      uint8_t size:1;
-      uint8_t granularity:1;
-    };
-  };
-  uint8_t baseHigh;
-};
-
-struct gdt_entry gdt;
-
-// Setup desired limit
-void desiredLimit() {
-    uint64_t desired_limit = 0;
-
-    gdt.limitLow = desired_limit&0xFFFF;
-    gdt.limitHigh = (desired_limit>>16)&0x0F;
-    
-    // Setup null descriptor.
-    memset(&gdt.nullDesc,0,sizeof(struct gdt_entry));
-    // Setup data descriptor.
-    memset(&gdt.dataDesc,(1<<44) | (1<<47) | (1<<41),
-          sizeof(struct gdt_entry));
-    // Setup code descriptor
-    memset(&gdt.codeDesc,(1<<44) | (1<<47) | (1<<41) | (1<<43) | (1<<53),
-          sizeof(struct gdt_entry));
-
-    // Result
-    printf("Setup null, code, and data descriptors!\n");
-}
+// Create a type
+typedef struct gdt_entry_struct gdt_entry_t;
