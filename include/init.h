@@ -11,12 +11,14 @@
 #define INIT
 
 void init() {
-    printf("Testing the 16 colors\n\n");
+    printf("Testing libc:\n");
+    printc("T", 1);
+    printf("\n");
+    const char* hex = "This is hex.";
+    printh(&hex);
+    printf("\nTesting the 16 colors\n\n");
     testColors();
-    printf("\n"); // pet peeve.
-    terminal_setcolor(VGA_COLOR_LIGHT_BLUE);
-    printf("Starting init system.\n");
-    terminal_setcolor(VGA_COLOR_WHITE);
+    printcol(VGA_COLOR_LIGHT_BLUE, "\nStarting init system\n");
     initGDT();
 }
 
