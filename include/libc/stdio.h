@@ -35,11 +35,11 @@ void printc(const char* data, size_t size){
 
 char htocOut[128];
 // Print a string but hex
-const char* htoc(int value){
-  int* valPtr = &value;
+const char* htoc(const char** value){
+  const char** valPtr = &value;
   uint_8* ptr;
   uint_8 temp;
-  uint_8 size = (sizeof(int)) * 2 - 1;
+  uint_8 size = (sizeof(const char**)) * 2 - 1;
   uint_8 i;
   for (i = 0; i < size; i++){
     ptr = ((uint_8*)valPtr + i);

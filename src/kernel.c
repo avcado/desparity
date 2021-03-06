@@ -1,10 +1,6 @@
-#include <stdbool.h>
-#include <stddef.h>
-#include <stdint.h>
+#include <stdio.h>
 
-#include "libc/stdio.h"
-
-void kernel_main(void){
+void main(void){
   // Initialize VGA
   terminal_initialize();
   printf("Printf.\n");
