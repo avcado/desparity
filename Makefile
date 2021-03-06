@@ -20,7 +20,7 @@ multiboot:
 kernel:
 	@echo Compiling the kernel! :D
 	@mkdir -pv bin/
-	@$(AS) -felf32 include/gdtReloadSegs.asm -o bin/gdtReloadSegs.o
+	@$(AS) -felf include/gdtReloadSegs.asm -o bin/gdtReloadSegs.o
 	@$(CC) -c src/kernel.c -o bin/kernel.o $(KERNCFLAGS)
 
 # Links everything together
