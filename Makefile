@@ -8,7 +8,7 @@ LDFLAGS := -ffreestanding -O2 -nostdlib
 QEMU := qemu-system-x86_64
 QEMUFLAGS := -cdrom
 
-all: multiboot kernel link
+all: multiboot kernel link makeIso qemu clean
 
 # Compiles multiboot stub
 multiboot:
