@@ -56,36 +56,37 @@ uint64_t desiredLimit = 0;
 struct gdt_entry gdt;
 
 void setupDesiredValues() {
-    // Data desc
-    memset(&gdt.dataDesc,(1<<44) | (1<<47) | (1<<41),
-           sizeof(struct gdt_entry));
+  // Data desc
+  memset(&gdt.dataDesc,(1<<44) | (1<<47) | (1<<41),
+         sizeof(struct gdt_entry));
     
-    // Code desc
-    memset(&gdt.codeDesc,(1<<44) | (1<<47) | (1<<41) | (1<<43) | (1<<53),
-           sizeof(struct gdt_entry));
+  // Code desc
+  memset(&gdt.codeDesc,(1<<44) | (1<<47) | (1<<41) | (1<<43) | (1<<53),
+        sizeof(struct gdt_entry));
     
-    // Null desc
-    memset(&gdt.nullDesc,0,sizeof(struct gdt_entry));
+  // Null desc
+  memset(&gdt.nullDesc,0,sizeof(struct gdt_entry));
 
-    // Rodata descriptor
-    gdt.limitLow = 0xFFFF;
-    gdt.limitHigh = 0xFF;
-    gdt.baseHigh = 0;
-    gdt.baseLow = 0;
-    gdt.baseMedium = 0;
+  // Rodata descriptor
+  gdt.limitLow = 0xFFFF;
+  gdt.limitHigh = 0xFF;
+  gdt.baseHigh = 0;
+  gdt.baseLow = 0;
+  gdt.baseMedium = 0;
 
 
-    // Tell the world we've done it.
-    printf("Setup some GDT descriptors' value.\n");
+  // Tell the world we've done it.
+  printf("Setup some GDT descriptors' value.\n");
     
-    // Set flags
-    gdt.rw_bit = 1;
-    gdt.type = 1;
-    gdt.exec = 1;  
+  // Set flags
+  gdt.rw_bit = 1;
+  gdt.type = 1;
+  gdt.exec = 1;  
 
-    printf("GDT Flags setup!\n");
+  printf("GDT Flags setup!\n");
 
-    reloadRegs();
+  asm("hlt");
+  reloadRegs();
 }
 
 void initGDT() {
