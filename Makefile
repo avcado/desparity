@@ -4,7 +4,7 @@ AS := nasm
 LDS := src/linker.ld
 BIN := desparity.bin
 OBJ := bin/boot.o bin/kernel.o bin/gdtReloadSegs.o
-LDFLAGS := -ffreestanding -O2 -nostdlib
+LDFLAGS := -ffreestanding -O2 -nostdlib -Ttext 0x7c00
 QEMU := qemu-system-x86_64
 QEMUFLAGS := -cdrom
 
