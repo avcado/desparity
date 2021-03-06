@@ -28,7 +28,7 @@ void init() {
 #define TESTCOL
 
 // Tests color to make sure that colors
-// are working
+// are working.  This is also ugly code
 void testColors() {
     printcol(VGA_COLOR_BLUE, "blue ");
     printcol(VGA_COLOR_GREEN, "green ");
