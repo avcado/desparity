@@ -17,133 +17,133 @@ global irq15
  
 global load_idt
  
-global irq0_handler
-global irq1_handler
-global irq2_handler
-global irq3_handler
-global irq4_handler
-global irq5_handler
-global irq6_handler
-global irq7_handler
-global irq8_handler
-global irq9_handler
-global irq10_handler
-global irq11_handler
-global irq12_handler
-global irq13_handler
-global irq14_handler
-global irq15_handler
+global _irq0_handler
+global _irq1_handler
+global _irq2_handler
+global _irq3_handler
+global _irq4_handler
+global _irq5_handler
+global _irq6_handler
+global _irq7_handler
+global _irq8_handler
+global _irq9_handler
+global _irq10_handler
+global _irq11_handler
+global _irq12_handler
+global _irq13_handler
+global _irq14_handler
+global _irq15_handler
  
-extern irq0_handler
-extern irq1_handler
-extern irq2_handler
-extern irq3_handler
-extern irq4_handler
-extern irq5_handler
-extern irq6_handler
-extern irq7_handler
-extern irq8_handler
-extern irq9_handler
-extern irq10_handler
-extern irq11_handler
-extern irq12_handler
-extern irq13_handler
-extern irq14_handler
-extern irq15_handler
+extern _irq0_handler
+extern _irq1_handler
+extern _irq2_handler
+extern _irq3_handler
+extern _irq4_handler
+extern _irq5_handler
+extern _irq6_handler
+extern _irq7_handler
+extern _irq8_handler
+extern _irq9_handler
+extern _irq10_handler
+extern _irq11_handler
+extern _irq12_handler
+extern _irq13_handler
+extern _irq14_handler
+extern _irq15_handler
  
 irq0:
   pusha
-  call irq0_handler
+  call _irq0_handler
   popa
   iret
  
 irq1:
   pusha
-  call irq1_handler
+  call _irq1_handler
   popa
   iret
  
 irq2:
   pusha
-  call irq2_handler
+  call _irq2_handler
   popa
   iret
  
 irq3:
   pusha
-  call irq3_handler
+  call _irq3_handler
   popa
   iret
  
 irq4:
   pusha
-  call irq4_handler
+  call _irq4_handler
   popa
   iret
  
 irq5:
   pusha
-  call irq5_handler
+  call _irq5_handler
   popa
   iret
  
 irq6:
   pusha
-  call irq6_handler
+  call _irq6_handler
   popa
   iret
  
 irq7:
   pusha
-  call irq7_handler
+  call _irq7_handler
   popa
   iret
  
 irq8:
   pusha
-  call irq8_handler
+  call _irq8_handler
   popa
   iret
  
 irq9:
   pusha
-  call irq9_handler
+  call _irq9_handler
   popa
   iret
  
 irq10:
   pusha
-  call irq10_handler
+  call _irq10_handler
   popa
   iret
  
 irq11:
   pusha
-  call irq11_handler
+  call _irq11_handler
   popa
   iret
  
 irq12:
   pusha
-  call irq12_handler
+  call _irq12_handler
   popa
   iret
  
 irq13:
   pusha
-  call irq13_handler
+  call _irq13_handler
   popa
   iret
  
 irq14:
   pusha
-  call irq14_handler
+  call _irq14_handler
   popa
   iret
  
 irq15:
   pusha
-  call irq15_handler
+  call _irq15_handler
   popa
   iret
  

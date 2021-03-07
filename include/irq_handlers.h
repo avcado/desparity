@@ -1,92 +1,92 @@
 #pragma once
 #include "IO.h"
 // Function prototype
-extern void irq0_handler(void);
-extern void irq1_handler(void);
-extern void irq2_handler(void);
-extern void irq3_handler(void);
-extern void irq4_handler(void);
-extern void irq5_handler(void);
-extern void irq6_handler(void);
-extern void irq7_handler(void);
-extern void irq8_handler(void);
-extern void irq9_handler(void);
-extern void irq10_handler(void);
-extern void irq11_handler(void);
-extern void irq12_handler(void);
-extern void irq13_handler(void);
-extern void irq14_handler(void);
-
+extern void _irq0_handler(void);
+extern void _irq1_handler(void);
+extern void _irq2_handler(void);
+extern void _irq3_handler(void);
+extern void _irq4_handler(void);
+extern void _irq5_handler(void);
+extern void _irq6_handler(void);
+extern void _irq7_handler(void);
+extern void _irq8_handler(void);
+extern void _irq9_handler(void);
+extern void _irq10_handler(void);
+extern void _irq11_handler(void);
+extern void _irq12_handler(void);
+extern void _irq13_handler(void);
+extern void _irq14_handler(void);
+extern void _irq15_handler(void);
 
 // Function declarations
-void irq0_handler(void) {
+void _irq0_handler(void) {
     outb(0x20, 0x20); //EOI
 }
  
-void irq1_handler(void) {
+void _irq1_handler(void) {
 	outb(0x20, 0x20); //EOI
 }
  
-void irq2_handler(void) {
+void _irq2_handler(void) {
     outb(0x20, 0x20); //EOI
 }
  
-void irq3_handler(void) {
+void _irq3_handler(void) {
     outb(0x20, 0x20); //EOI
 }
  
-void irq4_handler(void) {
+void _irq4_handler(void) {
     outb(0x20, 0x20); //EOI
 }
  
-void irq5_handler(void) {
+void _irq5_handler(void) {
     outb(0x20, 0x20); //EOI
 }
  
-void irq6_handler(void) {
+void _irq6_handler(void) {
     outb(0x20, 0x20); //EOI
 }
  
-void irq7_handler(void) {
+void _irq7_handler(void) {
     outb(0x20, 0x20); //EOI
 }
  
-void irq8_handler(void) {
+void _irq8_handler(void) {
     outb(0xA0, 0x20);
     outb(0x20, 0x20); //EOI          
 }
  
-void irq9_handler(void) {
+void _irq9_handler(void) {
     outb(0xA0, 0x20);
     outb(0x20, 0x20); //EOI
 }
  
-void irq10_handler(void) {
+void _irq10_handler(void) {
     outb(0xA0, 0x20);
     outb(0x20, 0x20); //EOI
 }
  
-void irq11_handler(void) {
+void _irq11_handler(void) {
     outb(0xA0, 0x20);
     outb(0x20, 0x20); //EOI
 }
  
-void irq12_handler(void) {
+void _irq12_handler(void) {
     outb(0xA0, 0x20);
     outb(0x20, 0x20); //EOI
 }
  
-void irq13_handler(void) {
+void _irq13_handler(void) {
     outb(0xA0, 0x20);
     outb(0x20, 0x20); //EOI
 }
  
-void irq14_handler(void) {
+void _irq14_handler(void) {
     outb(0xA0, 0x20);
     outb(0x20, 0x20); //EOI
 }
  
-void irq15_handler(void) {
+void _irq15_handler(void) {
     outb(0xA0, 0x20);
     outb(0x20, 0x20); //EOI
 }
