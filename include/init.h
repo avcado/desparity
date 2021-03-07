@@ -5,6 +5,7 @@
 #pragma once
 #include "gdt.h"
 #include "idt.h"
+#include "irq_handlers.h"
 #include "libc/stdio.h"
 #include "vga.h"
 
@@ -13,6 +14,7 @@ void init() {
     testColors();
     printcol(VGA_COLOR_LIGHT_BLUE, "\nStarting init system...\n");
     initGDT();
+    initIDT();
 }
 
 void testColors(){

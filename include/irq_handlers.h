@@ -1,19 +1,75 @@
 #pragma once
 #include "IO.h"
-// Function prototype
-void irq0_handler(void);
-void irq1_handler(void);
-void irq2_handler(void);
-void irq3_handler(void);
-void irq4_handler(void);
-void irq5_handler(void);
-void irq6_handler(void);
-void irq7_handler(void);
-void irq8_handler(void);
-void irq9_handler(void);
-void irq10_handler(void);
-void irq11_handler(void);
-void irq12_handler(void);
-void irq13_handler(void);
-void irq14_handler(void);
-void irq15_handler(void);
+
+
+static inline void irq0void_handler() {
+    outb(0x20, 0x20); //EOI
+}
+ 
+static inline void irq1_handler() {
+	outb(0x20, 0x20); //EOI
+}
+ 
+static inline void irq2_handler() {
+    outb(0x20, 0x20); //EOI
+}
+ 
+static inline void irq3_handler() {
+    outb(0x20, 0x20); //EOI
+}
+ 
+static inline void irq4_handler() {
+    outb(0x20, 0x20); //EOI
+}
+ 
+static inline void irq5_handler() {
+    outb(0x20, 0x20); //EOI
+}
+ 
+static inline void irq6_handler() {
+    outb(0x20, 0x20); //EOI
+}
+ 
+static inline void irq7_handler() {
+    outb(0x20, 0x20); //EOI
+}
+ 
+static inline void irq8_handler() {
+    outb(0xA0, 0x20);
+    outb(0x20, 0x20); //EOI          
+}
+ 
+static inline void irq9_handler() {
+    outb(0xA0, 0x20);
+    outb(0x20, 0x20); //EOI
+}
+ 
+static inline void irq10_handler() {
+    outb(0xA0, 0x20);
+    outb(0x20, 0x20); //EOI
+}
+ 
+static inline void irq11_handler() {
+    outb(0xA0, 0x20);
+    outb(0x20, 0x20); //EOI
+}
+ 
+static inline void irq12_handler() {
+    outb(0xA0, 0x20);
+    outb(0x20, 0x20); //EOI
+}
+ 
+static inline void irq13_handler() {
+    outb(0xA0, 0x20);
+    outb(0x20, 0x20); //EOI
+}
+ 
+static inline void irq14_handler() {
+    outb(0xA0, 0x20);
+    outb(0x20, 0x20); //EOI
+}
+ 
+static inline void irq15_handler() {
+    outb(0xA0, 0x20);
+    outb(0x20, 0x20); //EOI
+}
