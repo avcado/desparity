@@ -176,7 +176,7 @@ void IRQAddress() {
 	IDT[46].typeAttrib = 0x8e; // INTERRUPT_GATE  
 	IDT[46].offsetHigher = (irq14Addr & 0xffff0000) >> 16;
  
-        irq15Addr = (unsigned long)irq15; 
+    irq15Addr = (unsigned long)irq15; 
 	IDT[47].offsetLower = irq15Addr & 0xffff;
 	IDT[47].selector = 0x08; // KERNEL_CODE_SEGMENT_OFFSET  
 	IDT[47].zero = 0;
@@ -194,4 +194,5 @@ void initIDT() {
     remapPIC();
     printf("Remapped PIC!\n");
     IRQAddress();
+    printf("Addressed IRQs\n");
 }

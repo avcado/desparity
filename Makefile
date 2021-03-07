@@ -3,7 +3,7 @@ CC := i386-elf-gcc
 AS := nasm
 LDS := src/linker.ld
 BIN := desparity.bin
-OBJ := bin/boot.o bin/kernel.o
+OBJ := bin/boot.o bin/kernel.o bin/idt.o
 LDFLAGS := -ffreestanding -O2 -nostdlib
 QEMU := qemu-system-x86_64
 QEMUFLAGS := -cdrom
@@ -20,6 +20,7 @@ multiboot:
 kernel:
 	@echo Compiling the kernel! :D
 	@mkdir -pv bin/
+	@$(AS) -f elf include/idt.asm -o bin/idt.o
 	@$(CC) -c src/kernel.c -o bin/kernel.o $(KERNCFLAGS)
 
 # Links everything together
