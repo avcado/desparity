@@ -46,6 +46,26 @@ extern int irq13();
 extern int irq14();
 extern int irq15();
 
+// Some variables for addresses
+unsigned long irq0_address;
+unsigned long irq1_address;
+unsigned long irq2_address;
+unsigned long irq3_address;          
+unsigned long irq4_address; 
+unsigned long irq5_address;
+unsigned long irq6_address;
+unsigned long irq7_address;
+unsigned long irq8_address;
+unsigned long irq9_address;          
+unsigned long irq10_address;
+unsigned long irq11_address;
+unsigned long irq12_address;
+unsigned long irq13_address;
+unsigned long irq14_address;          
+unsigned long irq15_address;         
+unsigned long idt_address;
+unsigned long idt_ptr[2];
+
 // Init function so i can run it in init()
 void initIDT() {
     remapPIC();
