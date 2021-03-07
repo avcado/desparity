@@ -4,6 +4,7 @@
  * so they can be run */
 #pragma once
 #include "gdt.h"
+#include "idt.h"
 #include "libc/stdio.h"
 #include "vga.h"
 
@@ -11,15 +12,11 @@
 #define INIT
 
 void init() {
-    printf("Testing libc:\n");
-    printc("T", 1);
-    printf("\n");
-    const char* hex = "This is hex.";
-    printh(&hex);
-    printf("\nTesting the 16 colors\n\n");
+    printf("Color test: ");
     testColors();
     printcol(VGA_COLOR_LIGHT_BLUE, "\nStarting init system...\n");
     initGDT();
+    initIDT();
 }
 
 #endif //INIT
@@ -38,8 +35,8 @@ void testColors() {
     printcol(VGA_COLOR_BROWN, "brown ");
     printcol(VGA_COLOR_LIGHT_GREY, "light grey ");
     printcol(VGA_COLOR_DARK_GREY, "dark grey ");
-    printcol(VGA_COLOR_LIGHT_BLUE, "light blue ");
-    printcol(VGA_COLOR_LIGHT_GREEN, "light green   ");
+    printcol(VGA_COLOR_LIGHT_BLUE, "light blue   ");
+    printcol(VGA_COLOR_LIGHT_GREEN, "light green ");
     printcol(VGA_COLOR_LIGHT_CYAN, "light cyan ");
     printcol(VGA_COLOR_LIGHT_RED, "light red ");
     printcol(VGA_COLOR_LIGHT_MAGENTA, "light magenta ");

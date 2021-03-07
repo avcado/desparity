@@ -45,3 +45,9 @@ extern int irq12();
 extern int irq13();
 extern int irq14();
 extern int irq15();
+
+// Init function so i can run it in init()
+void initIDT() {
+    remapPIC();
+    printf("Remapped PIC!\n");
+}
