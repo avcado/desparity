@@ -1,5 +1,6 @@
 #pragma once
 #include "libc/stdio.h"
+#include "irq_handlers.h"
 #include "IO.h"
 
 struct IDTEntry {
