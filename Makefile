@@ -4,7 +4,7 @@ AS := nasm
 LDS := src/linker.ld
 BIN := desparity.bin
 OTHEROBJ := bin/boot.o bin/kernel.o
-OBJ := bin/irq.o bin/idt.o bin/irqHandle.o
+OBJ := bin/irq.o bin/idt.o bin/irqHandle.o bin/IO.o
 LDFLAGS := -ffreestanding -O2 -nostdlib
 QEMU := qemu-system-x86_64
 QEMUFLAGS := -cdrom
@@ -21,7 +21,9 @@ multiboot:
 kernel:
 	@echo Compiling the kernel! :D
 	@mkdir -pv bin/
+	# ASM kernel stuff
 	@$(AS) -felf32 include/idt.asm -o bin/irq.o
+	# C kernel stuff
 	@$(CC) -c src/kernel.c -o bin/kernel.o $(KERNCFLAGS)
 	@$(CC) -c src/irq_handle.c -o bin/irqHandle.o $(KERNCFLAGS)
 	@$(CC) -c src/idt.c -o bin/idt.o $(KERNCFLAGS)
@@ -29,9 +31,9 @@ kernel:
 # Links everything together
 link:
 	@echo Linking desparity! :D
-	@$(CC) -T src/linker.ld -o kernel.o $(OBJ) -lgcc
+	@$(CC) -T src/linker.ld -o bin/kernel.o $(OBJ) -lgcc -nostdlib
 	@echo passed.
-	$(CC) -T src/linker.ld -o desparity.bin $(OTHEROBJ) -lgcc
+	$(CC) -T src/linker.ld -o desparity.bin $(OTHEROBJ) -lgcc -nostdlib
 	@echo passed.
 
 # Create the ISO
