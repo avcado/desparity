@@ -85,8 +85,12 @@ void setupDesiredValues() {
 
   printf("GDT Flags setup!\n");
 
-  kerror("Triple Fault! Check cpudump.");
-  reloadRegs();
+  // kerror("Triple Fault! Check cpudump.");
+  asm("mov 0x08, %ax");
+  asm("mov %ds, %ax");
+
+  printcol(VGA_COLOR_LIGHT_GREEN, "GDT has been setup!\n");
+  // reloadRegs();
 }
 
 void initGDT() {

@@ -3,8 +3,8 @@ CC := i386-elf-gcc
 AS := nasm
 LDS := src/linker.ld
 BIN := desparity.bin
-OBJ := bin/boot.o bin/kernel.o bin/gdtReloadSegs.o
-LDFLAGS := -ffreestanding -O2 -nostdlib -Ttext 0x7c00
+OBJ := bin/boot.o bin/kernel.o
+LDFLAGS := -ffreestanding -O2 -nostdlib
 QEMU := qemu-system-x86_64
 QEMUFLAGS := -cdrom
 
@@ -20,7 +20,6 @@ multiboot:
 kernel:
 	@echo Compiling the kernel! :D
 	@mkdir -pv bin/
-	@$(AS) -felf include/gdtReloadSegs.asm -o bin/gdtReloadSegs.o
 	@$(CC) -c src/kernel.c -o bin/kernel.o $(KERNCFLAGS)
 
 # Links everything together

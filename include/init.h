@@ -18,7 +18,7 @@ void init() {
     printh(&hex);
     printf("\nTesting the 16 colors\n\n");
     testColors();
-    printcol(VGA_COLOR_LIGHT_BLUE, "\nStarting init system\n");
+    printcol(VGA_COLOR_LIGHT_BLUE, "\nStarting init system...\n");
     initGDT();
 }
 
