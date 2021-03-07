@@ -29,9 +29,10 @@ kernel:
 # Links everything together
 link:
 	@echo Linking desparity! :D
-	@ld $(OBJ) -c -o kernel.o
-	@ld kernel.o -o kernel.elf -T src/linker.ld
-	@$(CC) -T $(LDS) -o $(BIN) $(LDFLAGS) $(OBJ) -lgcc
+	@$(CC) -T src/linker.ld -c -o kernel.o $(OBJ) -lgcc
+	@echo passed.
+	@$(CC) -T src/linker.ld -c -o bin/kernel.elf bin/kernel.o -lgcc
+	@echo passed.
 
 # Create the ISO
 makeIso:
@@ -42,9 +43,9 @@ makeIso:
 
 # Clean!
 clean:
-	rm -rfv bin
-	rm desparity.bin desparity.iso
-	rm -rfv isodir/
+	rm -rfv bin || true
+	rm desparity.bin desparity.iso || true
+	rm -rfv isodir/ || true
 
 qemu:
 	$(QEMU) $(QEMUFLAGS) desparity.iso
