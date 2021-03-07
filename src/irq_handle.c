@@ -1,5 +1,5 @@
 #include "irq_handlers.h"
-#include "IO.c"
+#include "IO.h"
 
 void irq0_handler(void) {
     outb(0x20, 0x20); //EOI

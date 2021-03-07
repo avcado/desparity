@@ -4,7 +4,7 @@ AS := nasm
 LDS := src/linker.ld
 BIN := desparity.bin
 OTHEROBJ := bin/boot.o bin/kernel.o
-OBJ := bin/irq.o bin/idt.o bin/irqHandle.o bin/IO.o
+OBJ := bin/irq.o bin/idt.o bin/irqHandle.o
 LDFLAGS := -ffreestanding -O2 -nostdlib
 QEMU := qemu-system-x86_64
 QEMUFLAGS := -cdrom
@@ -31,7 +31,8 @@ kernel:
 # Links everything together
 link:
 	@echo Linking desparity! :D
-	@$(CC) -T src/linker.ld -o bin/kernel.o $(OBJ) -lgcc -nostdlib
+	# THANK YOU XLATB_PT2!!!:D
+	@$(CC) -T src/linker.ld -c -o bin/kernel.o $(OBJ) -lgcc -nostdlib
 	@echo passed.
 	$(CC) -T src/linker.ld -o desparity.bin $(OTHEROBJ) -lgcc -nostdlib
 	@echo passed.
