@@ -29,9 +29,9 @@ kernel:
 # Links everything together
 link:
 	@echo Linking desparity! :D
-	@$(CC) -T src/linker.ld -c -o kernel.o $(OBJ) -lgcc
+	@$(CC) -T src/linker.ld -o kernel.o $(OBJ) -lgcc
 	@echo passed.
-	@$(CC) -T src/linker.ld -c -o bin/kernel.elf bin/kernel.o -lgcc
+	$(CC) -T src/linker.ld -o desparity.bin $(OTHEROBJ) -lgcc
 	@echo passed.
 
 # Create the ISO
