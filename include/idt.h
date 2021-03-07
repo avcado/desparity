@@ -29,23 +29,23 @@ void remapPIC() {
 }
 
 // External functions we'll call in assembly
-int load_idt();
-int irq0();
-int irq1();
-int irq2();
-int irq3();
-int irq4();
-int irq5();
-int irq6();
-int irq7();
-int irq8();
-int irq9();
-int irq10();
-int irq11();
-int irq12();
-int irq13();
-int irq14();
-int irq15();
+extern int load_idt();
+extern int irq0();
+extern int irq1();
+extern int irq2();
+extern int irq3();
+extern int irq4();
+extern int irq5();
+extern int irq6();
+extern int irq7();
+extern int irq8();
+extern int irq9();
+extern int irq10();
+extern int irq11();
+extern int irq12();
+extern int irq13();
+extern int irq14();
+extern int irq15();
 
 // Some variables for addresses
 unsigned long irq0Addr;
@@ -184,7 +184,7 @@ static inline void IRQAddress() {
 	IDT[47].offsetHigher = (irq15Addr & 0xffff0000) >> 16;
  
 	// fill the IDT descriptor  
-	idtAddr = (unsigned long)IDT ;
+	idtAddr = (unsigned long)IDT;
 	idt_ptr[0] = (sizeof (struct IDTEntry) * 256) + ((idtAddr & 0xffff) << 16);
 	idt_ptr[1] = idtAddr >> 16 ;
 }
