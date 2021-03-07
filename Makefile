@@ -1,9 +1,10 @@
-KERNCFLAGS := -std=gnu99 -ffreestanding -O2 -Wall -Wextra -Iinclude -Iinclude/libc -fleading-underscore
+KERNCFLAGS := -std=gnu99 -ffreestanding -O2 -Wall -Wextra -Iinclude -Iinclude/libc
 CC := i386-elf-gcc
 AS := nasm
 LDS := src/linker.ld
 BIN := desparity.bin
-OBJ := bin/boot.o bin/kernel.o bin/idt.o
+OTHEROBJ := bin/boot.o bin/kernel.o
+OBJ := bin/irq.o bin/idt.o bin/irqHandle.o
 LDFLAGS := -ffreestanding -O2 -nostdlib
 QEMU := qemu-system-x86_64
 QEMUFLAGS := -cdrom
@@ -20,12 +21,16 @@ multiboot:
 kernel:
 	@echo Compiling the kernel! :D
 	@mkdir -pv bin/
-	@$(AS) -f elf include/idt.asm -o bin/idt.o
+	@$(AS) -felf32 include/idt.asm -o bin/irq.o
 	@$(CC) -c src/kernel.c -o bin/kernel.o $(KERNCFLAGS)
+	@$(CC) -c src/irq_handle.c -o bin/irqHandle.o $(KERNCFLAGS)
+	@$(CC) -c src/idt.c -o bin/idt.o $(KERNCFLAGS)
 
 # Links everything together
 link:
 	@echo Linking desparity! :D
+	@ld $(OBJ) -c -o kernel.o
+	@ld kernel.o -o kernel.elf -T src/linker.ld
 	@$(CC) -T $(LDS) -o $(BIN) $(LDFLAGS) $(OBJ) -lgcc
 
 # Create the ISO
