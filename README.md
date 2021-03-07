@@ -38,7 +38,3 @@ Clone the repo, and type
 ```sh
 $ make
 ```
-
-## Running
-
-All you need to do, is, after compiling, run `make makeIso; make qemu`.
