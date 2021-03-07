@@ -4,7 +4,7 @@ AS := nasm
 LDS := src/linker.ld
 BIN := desparity.bin
 OTHEROBJ := bin/boot.o bin/kernel.o
-OBJ := bin/irq.o bin/kerror.o
+OBJ := bin/idt.o bin/kerror.o
 LDFLAGS := -ffreestanding -O2 -nostdlib
 QEMU := qemu-system-x86_64
 QEMUFLAGS := -cdrom
@@ -22,7 +22,7 @@ kernel:
 	@echo Compiling the kernel! :D
 	@mkdir -pv bin/
 	# ASM kernel stuff
-	@$(AS) -felf32 include/idt.asm -o bin/irq.o
+	@$(AS) -felf32 include/idt.asm -o bin/idt.o
 	# C kernel stuff
 	@$(CC) -c src/kernel.c -o bin/kernel.o $(KERNCFLAGS)
 	@$(CC) -c src/kerror.c -o bin/kerror.o $(KERNCFLAGS)
