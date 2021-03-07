@@ -6,34 +6,17 @@
 void printf(const char* data);
 void printc(const char* data, size_t size);
 void printcol(uint8_t color, const char* data);
-
-#ifndef PRINTF
-#define PRINTF
-
 // A extremely basic printf
 // It doesn't support %s, %d, etc.
-
 void printf(const char* data){
     printc(data, strlen(data));
 }
-
-#endif //PRINTF
-
-#ifndef PRINTC
-#define PRINTC
-
 // Print out a character
 // to the screen
 void printc(const char* data, size_t size){
   for (size_t i = 0; i < size; i++)
     terminal_putchar(data[i]);
 }
-
-#endif //PRINTC
-
-#ifndef PRINTH
-#define PRINTH
-
 char htocOut[128];
 // Print a string but hex
 const char* htoc(int value){
@@ -59,11 +42,6 @@ void printh(int hex){
     printf(htoc(hex));
 }
 
-#endif //PRINTH
-
-#ifndef PRINTCOL
-#define PRINTCOL
-
 void printcol(uint8_t color, const char* data){
   // First we want to set the color
   terminal_setcolor(color);
@@ -72,5 +50,3 @@ void printcol(uint8_t color, const char* data){
   // Finally we can reset the color
   terminal_setcolor(VGA_COLOR_WHITE);
 }
-
-#endif //PRINTCOL
