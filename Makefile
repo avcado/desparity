@@ -31,9 +31,10 @@ kernel:
 link:
 	@echo Linking desparity! :D
 	# THANK YOU XLATB_PT2!!!:D
-	@$(CC) -o bin/kernel.o -T src/linker.ld -c $(OBJ) -lgcc -nostdlib
-	@echo passed.
-	$(CC) -o desparity.bin -T src/linker.ld $(OTHEROBJ) -lgcc -nostdlib
+	@$(CC) -o desparity.bin -T src/linker.ld $(OTHEROBJ) $(OBJ) -lgcc -nostdlib
+	#@$(CC) -o bin/kernel.o -T src/linker.ld -c $(OBJ) -lgcc -nostdlib
+	#@echo passed.
+	#@$(CC) -elf-gcc -o desparity.bin -T src/linker.ld bin/kernel.o bin/boot.o bin/idt.o -lgcc -nostdlib
 	@echo passed.
 
 # Create the ISO

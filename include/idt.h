@@ -2,6 +2,7 @@
 #include "libc/stdio.h"
 #include "irq_handlers.h"
 #include "IO.h"
+#include "kerror.h"
 
 struct IDTEntry {
     unsigned short int offsetLower; // offset lower bits
@@ -193,6 +194,7 @@ static inline void IRQAddress() {
 static inline void initIDT() {
     remapPIC();
     printf("Remapped PIC!\n");
+	// kerror("test");
     IRQAddress();
     printf("Addressed IRQs\n");
 }
