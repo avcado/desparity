@@ -3,7 +3,7 @@ CC := i386-elf-gcc
 AS := nasm
 LDS := src/linker.ld
 BIN := desparity.bin
-OTHEROBJ := bin/boot.o bin/kernel.o
+OTHEROBJ := bin/boot.o bin/kernel.o bin/gdt.o
 OBJ := bin/idt.o
 LDFLAGS := -ffreestanding -O2 -nostdlib
 QEMU := qemu-system-x86_64
@@ -23,6 +23,7 @@ kernel:
 	@mkdir -pv bin/
 	# ASM kernel stuff
 	@$(AS) -felf32 include/idt.asm -o bin/idt.o
+	@$(AS) -felf32 include/gdt.asm -o bin/gdt.o
 	@echo Should have compiled THE THing
 	# C kernel stuff
 	@$(CC) -c src/kernel.c -o bin/kernel.o $(KERNCFLAGS)
