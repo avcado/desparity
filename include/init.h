@@ -15,7 +15,7 @@ void init() {
     testColors();
     printcol(VGA_COLOR_LIGHT_BLUE, "\nStarting init system...\n");
     initGDT();
-    // initIDT();
+    initIDT();
 }
 
 void testColors(){

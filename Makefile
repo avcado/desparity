@@ -23,6 +23,7 @@ kernel:
 	@mkdir -pv bin/
 	# ASM kernel stuff
 	@$(AS) -felf32 include/idt.asm -o bin/idt.o
+	@echo Should have compiled THE THing
 	# C kernel stuff
 	@$(CC) -c src/kernel.c -o bin/kernel.o $(KERNCFLAGS)
 
@@ -30,9 +31,9 @@ kernel:
 link:
 	@echo Linking desparity! :D
 	# THANK YOU XLATB_PT2!!!:D
-	@$(CC) -T src/linker.ld -c -o bin/kernel.o $(OBJ) -lgcc -nostdlib
+	@$(CC) -o bin/kernel.o -T src/linker.ld -c $(OBJ) -lgcc -nostdlib
 	@echo passed.
-	$(CC) -T src/linker.ld -o desparity.bin $(OTHEROBJ) -lgcc -nostdlib
+	$(CC) -o desparity.bin -T src/linker.ld $(OTHEROBJ) -lgcc -nostdlib
 	@echo passed.
 
 # Create the ISO

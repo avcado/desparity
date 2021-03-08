@@ -14,7 +14,7 @@ global irq12
 global irq13
 global irq14
 global irq15
- 
+
 global load_idt
  
  
